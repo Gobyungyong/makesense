@@ -1,0 +1,19 @@
+.card_container {
+    width: 380px;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.question_content {
+    text-align: center;
+    word-break: break-all;
+}
+
+.answer_button {
+    display: flex;
+    flex-direction: column;
+    /* height: 100px; */
+    margin-top: 50px;
+}
