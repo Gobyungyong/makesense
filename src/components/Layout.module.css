@@ -6,8 +6,7 @@
     background-color: beige;
     border: 2px solid black;
     border-radius: 20px;
-    /* position: relative; */
     display: flex;
     justify-content: center;
-    padding: 8rem 0;
+    padding: 4rem 0;
 }
