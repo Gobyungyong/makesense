@@ -1,11 +1,13 @@
+
 .wrapper {
     width : 414px;
-    height : 800px;
+    height : 100vh;
+    min-height: 900px;
     background-color: beige;
     border: 2px solid black;
     border-radius: 20px;
-    position: relative;
+    /* position: relative; */
     display: flex;
     justify-content: center;
-    padding: 100px 0;
+    padding: 8rem 0;
 }
