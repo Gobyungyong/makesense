@@ -9,6 +9,7 @@ import Button from './Button';
 function Card(props) {
     const [index,setIndex] = useState(0);
     const [result,setResult] = useState([]);
+    let MBTI =[];
     
     const content_list = [
         {
@@ -96,57 +97,36 @@ function Card(props) {
         let fScore = 0;
         let jScore = 0;
         let aScore = 0;
-        const MBTI = []
 
         for (let i in result) {
-            if (result[i] === 'I') {
+            if (result[i].mbti === 'I') {
                 iScore ++;
             }
-            if (result[i] === 'N') {
+            if (result[i].mbti === 'N') {
                 nScore ++;
             }
-            if (result[i] === 'F') {
+            if (result[i].mbti === 'F') {
                 fScore ++;
             }
-            if (result[i] === 'J') {
+            if (result[i].mbti === 'J') {
                 jScore ++;
             }
-            if (result[i] === 'A') {
+            if (result[i].mbti === 'A') {
                 aScore ++;
             }
         }
 
-        if (iScore >= 2) {
-            MBTI.push('I')
-        } else {
-            MBTI.push('E')
-        }
+        iScore >= 2 ? MBTI.push('I') : MBTI.push('E');
+        nScore >= 2 ? MBTI.push('N') : MBTI.push('S');
+        fScore >= 2 ? MBTI.push('F') : MBTI.push('T');
+        jScore >= 2 ? MBTI.push('J') : MBTI.push('P');
+        aScore >= 2 ? MBTI.push('A') : MBTI.push('T');
+        
+        MBTI = MBTI.join('');
 
-        if (nScore >= 2) {
-            MBTI.push('N')
-        } else {
-            MBTI.push('S')
-        }
+        setResult(prev => [...prev,{'result' : MBTI}]);
 
-        if (fScore >= 2) {
-            MBTI.push('F')
-        } else {
-            MBTI.push('T')
-        }
-
-        if (jScore >= 2) {
-            MBTI.push('J')
-        } else {
-            MBTI.push('P')
-        }
-
-        if (aScore >= 2) {
-            MBTI.push('A')
-        } else {
-            MBTI.push('T')
-        }
-
-        console.log('당신의 MBTI',MBTI)
+        alert('당신의 MBTI는 ' + MBTI+ '입니다.');
 
         return MBTI;
     }
@@ -154,49 +134,43 @@ function Card(props) {
     function answerClickHandler(e) {                        // 답변 클릭 시
         if (index < 14) {                                  // 다음 질문 있으면 다음질문 렌더링
             setIndex(prev => prev + 1);                      
-            setResult(prev => [...prev,e.target.children[0].textContent]);
+            setResult(
+                prev => [...prev,{mbti : e.target.children[1].textContent, answer : e.target.children[0].textContent}]
+                );
         } else {                                           // 마지막 질문이면 결과 페이지로 이동
-            setResult(prev => [...prev,e.target.children[0].textContent]);
-            resultSetter()
-            alert('');
+            setResult(
+                prev => [...prev,{mbti : e.target.children[1].textContent, answer : e.target.children[0].textContent}]
+                );
+            resultSetter();
         }
-        console.log(result)
     }
 
     function viewPrevQuestionHandler() {                      // 이전 질문으로 가는 함수
         if( index > 0 && index <= 14){
             setIndex(prev => prev-1);
-            setResult(prev => [...prev].splice(0,index-1))
+            setResult(prev => [...prev].splice(0,index-1));
         } else {
-            alert('첫질문')
+            alert('첫질문');
         }
     }
     
-    function viewNextQuestionHandler() {                      // 다음 질문으로 가는 함수
-        if( index < 14){
-            setIndex(prev => prev + 1);
-        } else {
-            alert('마지막질문');
-        }
-    }
-
     return (
         <div>
             <progress value={index+1} max={15} className={classes.progress_bar}></progress>
             <div className={classes.content_box}>
-                <button className={classes.left_arrow} onClick={viewPrevQuestionHandler}>⇦</button>
                 <div className={classes.card_container}>{content_list[index].question}</div>
-                <button className={classes.right_arrow} onClick={viewResult}>⇨</button>
             </div>
             <div className={classes.answer_button}>
                 <Button onclick={answerClickHandler}>
-                    {content_list[index].answer1[0]}
+                    <span>{content_list[index].answer1[0]}</span>
                     <div hidden>{content_list[index].answer1[1]}</div>
                 </Button>
                 <Button onclick={answerClickHandler}>
-                    {content_list[index].answer2[0]}
+                    <span>{content_list[index].answer2[0]}</span>
                     <div hidden>{content_list[index].answer2[1]}</div>
                 </Button>
+                <Button className={classes.left_arrow} onclick={viewPrevQuestionHandler}>이전 답변 변경</Button>
+                <button className={classes.right_arrow} onClick={viewResult}>결과확인test</button>
             </div>
         </div>
     );
