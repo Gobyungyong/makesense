@@ -1,13 +1,19 @@
-import classes from './App.module.css'; 
+import { BrowserRouter,Routes,Route } from "react-router-dom";
 
-import Layout from './components/Layout';
-import Question from './components/Card';
+import classes from './App.module.css'; 
+import TestPage from './page/TestPage';
+import StartPage from "./page/StartPage";
 
 function App() {
   return (
-    <div className={classes.main_container}>
-      <Layout />
-    </div>
+    <BrowserRouter>    
+      <div className={classes.main_container}>
+          <Routes>
+            <Route index element={<StartPage/>} />
+            <Route path="/test" element={<TestPage/>} />
+          </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
