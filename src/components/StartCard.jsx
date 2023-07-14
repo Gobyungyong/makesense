@@ -17,4 +17,4 @@ function StartCard(props) {
     );
 }
 
-export default StartCard;
+export default StartCard;                                        
