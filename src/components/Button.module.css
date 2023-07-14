@@ -20,9 +20,21 @@
     margin-bottom: 30px;
     padding: 25px;
     letter-spacing: 2px;
+    /* animation-duration: 3s;
+    animation-name: opacity; */
 }
 
-.btn:hover  {
+/* @keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+} */
+
+.btn:hover, .btn:focus {
     background-color: #80C49D;
 }
 

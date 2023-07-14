@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import classes from './TestCard.module.css';
 import Button from './Button';
@@ -6,7 +7,7 @@ import Button from './Button';
 function Card(props) {
     const [index,setIndex] = useState(0);
     const [result,setResult] = useState([]);
-    const [question,setQuestion] = useState();
+    const navigate = useNavigate();
     let MBTI =[];
     
     const content_list = [
@@ -124,8 +125,6 @@ function Card(props) {
 
         setResult(prev => [...prev,{'result' : MBTI}]);
 
-        alert('당신의 MBTI는 ' + MBTI + '입니다.');
-
         return MBTI;
     }
 
@@ -155,6 +154,8 @@ function Card(props) {
                     );
             }
             resultSetter();
+
+            navigate(`/result/${MBTI}`,{replace:true});
 
         }
     }
