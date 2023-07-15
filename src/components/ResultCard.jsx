@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import classes from './ResultCard.module.css'
 import Button from './Button';
 
-
 function ResultCard(props) {
            //카톡 공유하기
     const shareKakao = ()=>{
@@ -32,9 +31,9 @@ function ResultCard(props) {
         });
     
     } ;
-    // const url = useParams();
+
     const resultList = {
-        ISFPA: '../img/grape.png',
+        ISFPA: '/img/ISFPA.jpg',
         // ISFPT: '../img/grape.jpg',
         // ISFJA: '../img/cherry.jpg',
         // ISFJT: ,
@@ -68,11 +67,12 @@ function ResultCard(props) {
         // ENTJT:,     
     };
 
+    console.log(`'../src/img/${props.mbti}.jpg'`);
+
     return (
         <div className={classes.startPageLayout}> 
             <h2>운명의 데스티니배지터블은 바로바로!</h2>
-            <br/>
-            <div className={classes.resultImg}><img src={resultList[props.mbti]}/></div>
+            <div className={classes.resultImg}><img src={process.env.PUBLIC_URL + `/img/${props.mbti}.PNG`}/></div>
 
             <div className={classes.snsBtn} onClick={() => shareKakao()}>
                 <a id="kakaotalk-sharing-btn" href="javascript:;">

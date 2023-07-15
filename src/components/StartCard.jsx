@@ -8,7 +8,7 @@ function StartCard(props) {
             <div>울룩불룩 울퉁불퉁 뾰쪽길쭉 야채 친구들 </div>
             <div>나는 무슨 야채일까?</div>
             <div className={classes.mainImg}>
-                <img src ="https://png.pngtree.com/png-clipart/20210129/ourlarge/pngtree-cute-anthropomorphic-fruits-vegetables-and-vegetables-png-image_2840786.jpg"></img>
+                <img src ={process.env.PUBLIC_URL + '/img/vegetables.PNG'}></img>
             </div>
             <div className={classes.startBtn}>
                 <Link to='/test'><Button>시작하기</Button></Link>
