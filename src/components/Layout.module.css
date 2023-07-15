@@ -3,10 +3,14 @@
     width : 414px;
     height : 100vh;
     min-height: 900px;
-    /* background-color: beige; */
-    /* border: 2px solid black; */
-    /* border-radius: 20px; */
     display: flex;
     justify-content: center;
     padding: 4rem 0;
+}
+
+.main_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }

@@ -1,0 +1,45 @@
+.dash_header {
+    border: 1px solid black;
+    width: 100vw;
+    text-align: center;
+}
+
+.dash_container {
+    display: flex;
+}
+
+.dash_left, .dash_right {
+    width: 50vw;
+    height: calc(100vh - 50px)
+}
+
+.dash_left {
+    display: flex;
+    flex-direction: column;
+}
+
+.total_tester, .shared_form {
+    border: 1px solid black;
+    padding-left: 30px;
+}
+
+.dash_right {
+    font-size: 30px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.dash_right::-webkit-scrollbar {
+    display: none;
+}
+
+
+.dash_right ul {
+    list-style-type: none;
+}
+
+.ranking_title {
+    border-bottom: 1px black solid;
+}

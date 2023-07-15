@@ -14,5 +14,31 @@
 }
 
 .snsBtn img{
-    width: 40px;
+    width: 32px;
+}
+.snsBtn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 10px;
+}
+.snsShareBtn{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px auto;
+}
+.snsShareBtn button{
+    width: 33px;
+	height: 32px;
+	color: white;
+	border-radius: 24px;
+	border: 0px;
+	font-weight: 500;
+    text-align: center;
+	cursor: pointer;
+	background-color: #df5b1ee4;
+	&:hover {
+		background-color: #a99fee;
+	}
 }
