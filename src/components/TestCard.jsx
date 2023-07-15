@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import classes from './TestCard.module.css';
-import Button from './Button';
 
 function Card(props) {
     const [index,setIndex] = useState(0);
     const [result,setResult] = useState([]);
+    const [isPost,setIsPost] = useState(false);
     const navigate = useNavigate();
     let MBTI =[];
     
@@ -114,7 +115,7 @@ function Card(props) {
                 aScore ++;
             }
         }
-
+        
         iScore >= 2 ? MBTI.push('I') : MBTI.push('E');
         nScore >= 2 ? MBTI.push('N') : MBTI.push('S');
         fScore >= 2 ? MBTI.push('F') : MBTI.push('T');
@@ -122,30 +123,28 @@ function Card(props) {
         aScore >= 2 ? MBTI.push('A') : MBTI.push('T');
         
         MBTI = MBTI.join('');
-
+        
         setResult(prev => [...prev,{'result' : MBTI}]);
-
-        return MBTI;
+        setIsPost(prev => !prev)
     }
-
+    
     function answerClickHandler(e) {                        // 답변 클릭 시
         if (index < 14) {                                  // 다음 질문 있으면 다음질문 렌더링
-
+            
             if(e.target.textContent === content_list[index].answer1[0]) {                       
                 setResult(
-                prev => [...prev,{mbti : content_list[index].answer1[1], answer : e.target.textContent}]
-                );
-            } else {
-                setResult(
-                    prev => [...prev,{mbti : content_list[index].answer2[1], answer : e.target.textContent}]
+                    prev => [...prev,{mbti : content_list[index].answer1[1], answer : e.target.textContent}]
                     );
+                } else {
+                    setResult(
+                    prev => [...prev,{mbti : content_list[index].answer2[1], answer : e.target.textContent}]
+                );
             }
-                setIndex(prev => prev + 1);
-                
+            setIndex(prev => prev + 1);
+            
         } else {                                           // 마지막 질문이면 결과 페이지로 이동
-
             if(e.target.textContent === content_list[index].answer1[0]) {                       
-                setResult(
+            setResult(
                 prev => [...prev,{mbti : content_list[index].answer1[1], answer : e.target.textContent}]
                 );
             } else {
@@ -153,35 +152,66 @@ function Card(props) {
                     prev => [...prev,{mbti : content_list[index].answer2[1], answer : e.target.textContent}]
                     );
             }
-            resultSetter();
-
-            navigate(`/result/${MBTI}`,{replace:true});
-
+                
+            resultSetter()            
         }
     }
-
+    
     function viewPrevQuestionHandler() {                      // 이전 질문으로 가는 함수
         if( index > 0 && index <= 14){
             setIndex(prev => prev-1);
             setResult(prev => [...prev].splice(0,index-1));
-        } else {
-            alert('첫질문');
         }
     }
 
+    useEffect(()=>{  // setResult 비동기적으로 작동해서 결과페이지 이동 useEffect로 사용
+        if(isPost){
+            const garim = []
+            const ryoona = []
+            
+            for(let i in result){
+                garim.push(result[i]['mbti'])
+            }
+            
+            for(let i in result){
+                ryoona.push(result[i]['answer'])
+            }
+            
+            const post_result = {
+                result : result[15]['result'],
+                mbti : garim.join(),
+                answer : ryoona.join()
+            };
+            
+            console.log(post_result);
+            
+            axios.post(
+                'http://localhost:8000/api/v1/result/',
+                post_result,
+                {
+                    headers: {
+                        "Content-Type": `application/json`,
+                    },
+                }   
+                )
+                .then((res)=>{console.log(res);});
+                navigate(`/result/${result[15]['result']}`,{replace:true});            
+            }
+        },[isPost])
+        
     return (
         <div className={classes.testcard_container}>
             <progress value={index+1} max={15} className={classes.progress_bar}></progress>
             <div className={classes.content_box}>
                 <div className={classes.card_container}>{content_list[index].question}</div>
             </div>
-            <div className={classes.answer_button}>
-                <Button onclick={answerClickHandler}>
+            <div className={classes.answer_button_container}>
+                <button className={classes.answer_btn} onClick={answerClickHandler}>
                     {content_list[index].answer1[0]}
-                </Button>
-                <Button onclick={answerClickHandler}>
+                </button>
+                <button className={classes.answer_btn} onClick={answerClickHandler}>
                     {content_list[index].answer2[0]}
-                </Button>
+                </button>
             </div>
                 {index !== 0 ? // 이전 답변 수정 버튼 조건부 랜더링
                 <button onClick={viewPrevQuestionHandler}>이전 답변 변경</button>

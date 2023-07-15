@@ -30,10 +30,13 @@ function ResultCard(props) {
         ],
         });
     
-    } ;
+    };
 
     const resultList = {
-        ISFPA: '/img/ISFPA.jpg',
+        ISFPA: {
+            vegetable : '파슬리',
+            content : ''
+        }
         // ISFPT: '../img/grape.jpg',
         // ISFJA: '../img/cherry.jpg',
         // ISFJT: ,
@@ -67,13 +70,11 @@ function ResultCard(props) {
         // ENTJT:,     
     };
 
-    console.log(`'../src/img/${props.mbti}.jpg'`);
 
     return (
         <div className={classes.startPageLayout}> 
             <h2>운명의 데스티니배지터블은 바로바로!</h2>
             <div className={classes.resultImg}><img src={process.env.PUBLIC_URL + `/img/${props.mbti}.PNG`}/></div>
-
             <div className={classes.snsBtn} onClick={() => shareKakao()}>
                 <a id="kakaotalk-sharing-btn" href="javascript:;">
                 <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"

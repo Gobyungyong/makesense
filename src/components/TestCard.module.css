@@ -36,13 +36,47 @@
     text-align: center;
 }
 
-.answer_button {
+.answer_button_container {
     display: flex;
     flex-direction: column;
     margin-top: 5rem;
     width: 80%;
 }
 
-/* .deactivate {
+.answer_btn {
+    border: none;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    color: rgb(92, 234, 40);
+    /* font-weight: 700; */
+    font-size: 15px;
+    background-color: rgba(189, 102, 40, 0.8);
+    padding: 17px 60px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+    margin-bottom: 30px;
+    word-break: break-all;
+}
 
-} */
+.answer_btn:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 490%;
+    width: 140%;
+    background: rgba(130,214,241,0.3);
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    -webkit-transform: translateX(-200%) translateY(-25%) rotate(45deg);
+    transform: translateX(-200%) translateY(-25%) rotate(45deg);
+}
+
+.answer_btn:hover:after {
+    -webkit-transform: translateX(-9%) translateY(-25%) rotate(15deg);
+    transform: translateX(-9%) translateY(-25%) rotate(15deg);
+}
