@@ -10,6 +10,7 @@ function DashBoard(props) {
     const [linkcopy,setLinkcopy] = useState();
     const [ranking,setRanking] = useState();
     const [answers,setAnswers] = useState();
+    const [totalUser, setTotalUser] = useState();
     let ranking_list = []
     
     useEffect(() => {
@@ -24,12 +25,13 @@ function DashBoard(props) {
         axios.get('http://localhost:8000/api/v1/result/top_MBTI/')
         .then((res) => {
             setRanking(res.data)
-        });
-        
-        axios.get('http://localhost:8000/api/v1/result/selected_answers/')
-        .then((res) => {
-            setAnswers(res.data);
-        });
+        })
+
+        axios.get('http://localhost:8000/api/v1/result/totalUser/')
+        .then((res)=>{
+            setTotalUser(res.data)
+        },[]);
+
     }
     ,[]);
     
@@ -46,7 +48,7 @@ function DashBoard(props) {
             <div className={classes.dash_container}>
                 <div className={classes.dash_left}>
                     <div className={classes.total_tester}>
-                        <p>전체 테스터 수 : </p>
+                        <p>전체 테스터 수 : {totalUser} </p>
                     </div>
                     <div className={classes.shared_form}>
                         <div>전체 공유 수 : {total}</div>
@@ -61,6 +63,7 @@ function DashBoard(props) {
                                 <li key={index}>{answer[0]} : {answer[1]}</li>
                             )}
                         </ul>    */}
+                        선택 답변 수 :
                     </div>
                 </div>
                 <div className={classes.dash_right}>
