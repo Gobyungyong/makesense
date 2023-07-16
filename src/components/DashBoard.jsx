@@ -26,7 +26,7 @@ function DashBoard(props) {
         axios.get('http://localhost:8000/api/v1/result/selected_answers/')
         .then((res)=>{
             setAnswers(res.data);
-            console.log(answers);
+            console.log(answers)
         });
         
         axios.get('http://localhost:8000/api/v1/result/totalUser/')
@@ -54,7 +54,7 @@ function DashBoard(props) {
     return (
         <div>
             <div className={classes.dash_header}>
-                <h1>monnani</h1>
+                <h1>못난이 채소 DashBoard</h1>
             </div>
             <div className={classes.dash_container}>
                 <div className={classes.dash_left}>
@@ -63,9 +63,9 @@ function DashBoard(props) {
                     </div>
                     <div className={classes.shared_form}>
                         <div>전체 공유 수 : {total}</div>
-                        <div>카카오톡으로 공유된 횟수: {kakaoShared}</div>
-                        <div>페이스북으로 공유된 횟수 : {facebookShared}</div>
-                        <div>링크 복사로 공유된 횟수 : {linkcopy}</div>
+                        <div>Kakaotalk: {kakaoShared}</div>
+                        <div>Facebook : {facebookShared}</div>
+                        <div>링크 복사 : {linkcopy}</div>
                     </div>
                     <div className={classes.answer_count}>
                         선택 답변 수 :
