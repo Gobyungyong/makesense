@@ -9,6 +9,7 @@ function DashBoard(props) {
     const [kakaoShared,setKakaoShared] = useState();
     const [linkcopy,setLinkcopy] = useState();
     const [ranking,setRanking] = useState();
+    const [totalUser, setTotalUser] = useState();
     let ranking_list = []
     
     useEffect(() => {
@@ -25,6 +26,11 @@ function DashBoard(props) {
             setRanking(res.data)
         })
 
+        axios.get('http://localhost:8000/api/v1/result/totalUser/')
+        .then((res)=>{
+            setTotalUser(res.data)
+        },[]);
+
     }
     ,[]);
     
@@ -40,7 +46,7 @@ function DashBoard(props) {
             <div className={classes.dash_container}>
                 <div className={classes.dash_left}>
                     <div className={classes.total_tester}>
-                        <p>전체 테스터 수 : </p>
+                        <p>전체 테스터 수 : {totalUser} </p>
                     </div>
                     <div className={classes.shared_form}>
                         <div>전체 공유 수 : {total}</div>
@@ -49,7 +55,7 @@ function DashBoard(props) {
                         <div>링크 복사로 공유된 횟수 : {linkcopy}</div>
                     </div>
                     <div className={classes.answer_count}>
-                        선택 답변 수
+                        선택 답변 수 :
                     </div>
                 </div>
                 <div className={classes.dash_right}>
