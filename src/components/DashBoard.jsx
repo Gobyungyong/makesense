@@ -11,34 +11,45 @@ function DashBoard(props) {
     const [ranking,setRanking] = useState();
     const [answers,setAnswers] = useState();
     const [totalUser, setTotalUser] = useState();
-    let ranking_list = []
+    let ranking_list = [];
+    let answer_list = [];
     
     useEffect(() => {
         axios.get('http://localhost:8000/api/v1/share/')
         .then((res)=>{
-            setTotal(res.data.total_share)
-            setFacebookShared(res.data.shared_form.instagram)
-            setKakaoShared(res.data.shared_form.kakaotalk)
-            setLinkcopy(res.data.shared_form.linkCopy)
+            setTotal(res.data.total_share);
+            setFacebookShared(res.data.shared_form.instagram);
+            setKakaoShared(res.data.shared_form.kakaotalk);
+            setLinkcopy(res.data.shared_form.linkCopy);
         });
         
-        axios.get('http://localhost:8000/api/v1/result/top_MBTI/')
-        .then((res) => {
-            setRanking(res.data)
-        })
-
+        axios.get('http://localhost:8000/api/v1/result/selected_answers/')
+        .then((res)=>{
+            setAnswers(res.data);
+            console.log(answers);
+        });
+        
         axios.get('http://localhost:8000/api/v1/result/totalUser/')
         .then((res)=>{
-            setTotalUser(res.data)
-        },[]);
+            setTotalUser(res.data);
+        });
 
+        axios.get('http://localhost:8000/api/v1/result/top_MBTI/')
+        .then((res) => {
+            setRanking(res.data);
+        });
+        
     }
     ,[]);
     
     for(let i in ranking) {
         ranking_list.push([i,ranking[i]])
-        console.log('answers : ',answers)
     }
+
+    for (let j in answers) {
+        const { answer, count } = answers[j];
+        answer_list.push([answer, count]);
+      }
 
     return (
         <div>
@@ -57,13 +68,12 @@ function DashBoard(props) {
                         <div>링크 복사로 공유된 횟수 : {linkcopy}</div>
                     </div>
                     <div className={classes.answer_count}>
-                        선택 답변 수
-                        {/* <ul>
-                            {answers.map((answer, index) => 
+                        선택 답변 수 :
+                        <ul>
+                            {answer_list.map((answer, index) => 
                                 <li key={index}>{answer[0]} : {answer[1]}</li>
                             )}
-                        </ul>    */}
-                        선택 답변 수 :
+                        </ul>   
                     </div>
                 </div>
                 <div className={classes.dash_right}>
