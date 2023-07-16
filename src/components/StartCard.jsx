@@ -5,8 +5,8 @@ import Button from './Button';
 function StartCard(props) {
     return (
         <div className={classes.startPageLayout}>
-            <div>울룩불룩 울퉁불퉁 뾰쪽길쭉 야채 친구들 </div>
-            <div>나는 무슨 야채일까?</div>
+            <div className={classes.test_tilte}>울룩불룩 울퉁불퉁 뾰쪽길쭉 야채 친구들! 나는 무슨 야채일까?</div>
+            {/* <div>나는 무슨 야채일까?</div> */}
             <div className={classes.mainImg}>
                 <img src ={process.env.PUBLIC_URL + '/img/vegetables.PNG'}></img>
             </div>

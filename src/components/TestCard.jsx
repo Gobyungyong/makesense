@@ -88,9 +88,7 @@ function Card(props) {
             answer2 : ['신나는 주말! 친구들 만나러 나가야지~ 뭐 입고 나가지?', 'E'],
         },
     ];
-    
-    function viewResult() {console.log(result);} //test
-    
+        
     function resultSetter(){
         let iScore = 0;
         let nScore = 0;
@@ -216,8 +214,6 @@ function Card(props) {
                 {index !== 0 ? // 이전 답변 수정 버튼 조건부 랜더링
                 <button onClick={viewPrevQuestionHandler}>이전 답변 변경</button>
                 :null}
-
-                <button onClick={viewResult}>결과확인test</button>
         </div>
     );
 }

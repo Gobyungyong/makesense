@@ -80,3 +80,26 @@
     -webkit-transform: translateX(-9%) translateY(-25%) rotate(15deg);
     transform: translateX(-9%) translateY(-25%) rotate(15deg);
 }
+
+@media all and (max-width:767px){
+    .testcard_container {
+        height: 660px;
+    }
+    
+    .progress_bar {
+        height: 30px;
+    }
+    
+    .card_container {
+        width: 350px;
+        height: 200px;
+        display: flex;
+        font-size: 25px;
+    }   
+
+    .progress_bar {
+        height: 20px;
+        width: 80%;
+        margin-top: 20px;
+    }
+}

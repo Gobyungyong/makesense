@@ -3,8 +3,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     /* max-width: 900px; */
     /* border: 3px solid darkblue; */
+}
+
+.test_tilte {
+    word-break: keep-all;
+    text-align: center;
+    z-index: 2;
 }
 
 .mainImg{
@@ -12,10 +19,33 @@
 }
 .mainImg img{
     width: 400px;
+    
 }
 
 .startBtn{
     margin: 40px auto;
     width: 50%;
     max-width: 300px;
+}
+
+@media all and (max-width:767px){
+    .startPageLayout{
+        height: 667px;
+    }
+    .mainImg img{
+        width: 350px;
+        height: 450px;
+    }
+    
+    .startBtn{
+        /* margin: 40px auto; */
+        width: 50%;
+        max-width: 300px;
+    }
+    
+    
+    .mainImg {
+        width: 350px;
+        margin-top: 0;
+    }
 }
