@@ -5,10 +5,14 @@ import Button from './Button';
 function StartCard(props) {
     return (
         <div className={classes.startPageLayout}>
-            <div className={classes.test_tilte}>울룩불룩 울퉁불퉁 뾰쪽길쭉 야채 친구들! 나는 무슨 야채일까?</div>
+            <div className={classes.test_tilte}>울룩불룩</div>
+            <div className={classes.test_tilte1}> 울퉁불퉁</div> 
+            <div className={classes.test_tilte2}>뾰쪽길쭉</div> 
+            <div className={classes.test_tilte3}>야채 친구들!</div>
+            <div className={classes.test_tilte4}>나는 무슨 야채일까?</div>
             {/* <div>나는 무슨 야채일까?</div> */}
             <div className={classes.mainImg}>
-                <img src ={process.env.PUBLIC_URL + '/img/vegetables.PNG'}></img>
+                <img className={classes.backImg} src ={process.env.PUBLIC_URL + '/img/vegetable_blue.png'}></img>
             </div>
             <div className={classes.startBtn}>
                 <Link to='/test'><Button>시작하기</Button></Link>

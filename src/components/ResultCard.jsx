@@ -6,6 +6,8 @@ import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import { FacebookIcon, TwitterIcon} from "react-share";
 import { CopyToClipboard} from 'react-copy-to-clipboard';
 import axios from 'axios';
+import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function ResultCard(props) {
            //카톡 공유하기
@@ -208,23 +210,24 @@ function ResultCard(props) {
     return (
         <div className={classes.startPageLayout}>
             <div className={classes.result_content}> 
-                <h2>운명의 데스티니배지터블은 바로바로!</h2>
+                <h2>운명의 몬나니 야채는?!?! 바로바로!!!</h2>
+
+                <div className={classes.resultHead}>{resultList[props.mbti].vegetable}</div>
                 <div className={classes.resultImg}><img src={process.env.PUBLIC_URL + `/img/${props.mbti}.PNG`}/></div>
-                <div>{resultList[props.mbti].vegetable}</div>
-                <div>{resultList[props.mbti].content}</div>
-                <div>{resultList[props.mbti].nickname}</div>
+                <div className={classes.resultContent}>{resultList[props.mbti].content}</div>
+                <div className={classes.resultNickname}>{resultList[props.mbti].nickname}</div>
             </div>
             <div className={classes.market_content}>
-                <h3>못난이 농작물에 대해 알고계신가요?</h3>
+                <h3>못난이 농작물에 대해 알고계신가요?🧐</h3>
                 <div>겉보기엔 못생겼지만 맛은 예쁜 못난이 농작물에 대해 얼마나 알고 계신가요?</div>
                 <div>단지 생긴게 이상하다는 이유로 폐기되는 농작물이 연간 13억톤에 달한다고 합니다.</div>
                 <div>높은 품질과 착한 가격을 가진 못난이 농작물을 통해</div>
                 <div>환경도 지키고 가치있는 소비를 해보세요!</div>
-                <button onClick={()=>{
+                <button className={classes.uglyBtn} onClick={()=>{
                             axios.post('http://localhost:8000/api/v1/share/',{
                                 form_name: 'market', 
                             });
-                        }}><a href="https://uglyus.co.kr/ustore">못난이농산물 구경가기</a></button>
+                        }}><a href="https://uglyus.co.kr/ustore"><span data-text="못난이농산물 구경가기">못난이농산물 구경가기</span></a></button>
             </div>
             <div className={classes.snsShareBtn}>
                 <div className={classes.snsBtn} onClick={() => shareKakao()}>
@@ -254,13 +257,12 @@ function ResultCard(props) {
                         }} className={classes.snsBtn} text={`http://localhost:3001/result/${props.mbti}`}>
                     <button onClick={()=>{
                         alert('복사완료!')
-                    }}>URL</button>
+                    }}><FontAwesomeIcon icon={ faPaperclip }   /></button>
                 </CopyToClipboard>
             </div>
-            <div>
+            <div className='replayBtn'>
                 <Link to='/'><Button>한번 더 수확해볼까?</Button></Link>
             </div>
-           
         </div>
     );
 }

@@ -9,6 +9,7 @@ function DashBoard(props) {
     const [kakaoShared,setKakaoShared] = useState();
     const [linkcopy,setLinkcopy] = useState();
     const [ranking,setRanking] = useState();
+    const [answers,setAnswers] = useState();
     let ranking_list = []
     
     useEffect(() => {
@@ -18,18 +19,23 @@ function DashBoard(props) {
             setFacebookShared(res.data.shared_form.instagram)
             setKakaoShared(res.data.shared_form.kakaotalk)
             setLinkcopy(res.data.shared_form.linkCopy)
-        })
+        });
         
         axios.get('http://localhost:8000/api/v1/result/top_MBTI/')
         .then((res) => {
             setRanking(res.data)
-        })
-
+        });
+        
+        axios.get('http://localhost:8000/api/v1/result/selected_answers/')
+        .then((res) => {
+            setAnswers(res.data);
+        });
     }
     ,[]);
     
     for(let i in ranking) {
         ranking_list.push([i,ranking[i]])
+        console.log('answers : ',answers)
     }
 
     return (
@@ -50,6 +56,11 @@ function DashBoard(props) {
                     </div>
                     <div className={classes.answer_count}>
                         선택 답변 수
+                        {/* <ul>
+                            {answers.map((answer, index) => 
+                                <li key={index}>{answer[0]} : {answer[1]}</li>
+                            )}
+                        </ul>    */}
                     </div>
                 </div>
                 <div className={classes.dash_right}>

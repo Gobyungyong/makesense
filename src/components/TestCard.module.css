@@ -1,7 +1,8 @@
 .testcard_container {
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 /* progress bar */
@@ -10,20 +11,25 @@
     appearance: none;
     width: 100%;
     height: 30px;
-    margin-bottom: 15%;
     border: 1px solid black;
     border-radius: 3px;
+    margin: 20px auto;
+    border: none;
 }
 
 .progress_bar::-webkit-progress-bar {
     background-color: rgb(164, 82, 24); 
+    background-image: url('../../public/img/bar.png');
+    background-size: contain;
 }
 
 .progress_bar::-webkit-progress-value {
-    background-color: greenyellow;
+    background-color: rgba(19, 206, 29, 0.267);
+    
 }
 
 /* 카드섹션 */
+
 
 .card_container {
     width: 380px;
@@ -34,10 +40,12 @@
     word-break: keep-all;
     font-size: 30px;
     text-align: center;
+    margin: 0 auto;
 }
 
 .answer_button_container {
     display: flex;
+    margin: 0 auto;
     flex-direction: column;
     margin-top: 5rem;
     width: 80%;
@@ -61,6 +69,7 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.20);
     margin-bottom: 30px;
     word-break: break-all;
+    border-radius: 15px;
 }
 
 .answer_btn:after {
@@ -85,6 +94,8 @@
 .prev_btn {
     border: none;
     cursor: pointer;
+    margin: 0 auto;
+    display: block;
 }
 
 @media all and (max-width:767px){
