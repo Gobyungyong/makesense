@@ -33,6 +33,12 @@ function ResultCard(props) {
             },
         ],
         });
+
+        
+        axios.post('http://localhost:8000/api/v1/share/',{
+            form_name: 'kakaotalk', 
+        });
+        
     
     } ;
 
@@ -199,12 +205,6 @@ function ResultCard(props) {
         },     
     };
 
-    console.log(`'../src/img/${props.mbti}.jpg'`);
-
-    // axios.post('url',{
-    //     form_name: 'Facebook', 
-    // });
-
     return (
         <div className={classes.startPageLayout}>
             <div className={classes.result_content}> 
@@ -220,7 +220,11 @@ function ResultCard(props) {
                 <div>단지 생긴게 이상하다는 이유로 폐기되는 농작물이 연간 13억톤에 달한다고 합니다.</div>
                 <div>높은 품질과 착한 가격을 가진 못난이 농작물을 통해</div>
                 <div>환경도 지키고 가치있는 소비를 해보세요!</div>
-                <button><a href="https://uglyus.co.kr/ustore">못난이농산물 구경가기</a></button>
+                <button onClick={()=>{
+                            axios.post('http://localhost:8000/api/v1/share/',{
+                                form_name: 'market', 
+                            });
+                        }}><a href="https://uglyus.co.kr/ustore">못난이농산물 구경가기</a></button>
             </div>
             <div className={classes.snsShareBtn}>
                 <div className={classes.snsBtn} onClick={() => shareKakao()}>
@@ -230,12 +234,24 @@ function ResultCard(props) {
                     </a>
                 </div>
                 <div>
-                    <FacebookShareButton className={classes.snsBtn} url={`http://localhost:3001/result/${props.mbti}`}><FacebookIcon size={32} round={true} /></FacebookShareButton> 
+                    <FacebookShareButton onClick={()=>{
+                            axios.post('http://localhost:8000/api/v1/share/',{
+                                form_name: 'facebook' 
+                            });
+                        }} className={classes.snsBtn} url={`http://localhost:3001/result/${props.mbti}`}><FacebookIcon size={32} round={true} /></FacebookShareButton> 
                 </div>
                 <div>
-                    <TwitterShareButton className={classes.snsBtn} url={`http://localhost:3001/result/${props.mbti}`}><TwitterIcon size={32} round={true} /></TwitterShareButton> 
+                    <TwitterShareButton onClick={()=>{
+                            axios.post('http://localhost:8000/api/v1/share/',{
+                                form_name: 'twitter' 
+                            });
+                        }} className={classes.snsBtn} url={`http://localhost:3001/result/${props.mbti}`}><TwitterIcon size={32} round={true} /></TwitterShareButton> 
                 </div>
-                <CopyToClipboard className={classes.snsBtn} text={`http://localhost:3001/result/${props.mbti}`}>
+                <CopyToClipboard onClick={()=>{
+                            axios.post('http://localhost:8000/api/v1/share/',{
+                                form_name: 'copylink' 
+                            });
+                        }} className={classes.snsBtn} text={`http://localhost:3001/result/${props.mbti}`}>
                     <button onClick={()=>{
                         alert('복사완료!')
                     }}>URL</button>
