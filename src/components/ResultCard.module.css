@@ -1,11 +1,16 @@
 .startPageLayout{
+    height: 90vh;
     display: block;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* max-width: 900px; */
-    /* border: 3px solid darkblue; */
     text-align: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.startPageLayout::-webkit-scrollbar {
+    display: none;
 }
 
 .resultImg img{
@@ -16,18 +21,21 @@
 .snsBtn img{
     width: 32px;
 }
+
 .snsBtn {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-right: 10px;
 }
+
 .snsShareBtn{
     display: flex;
     justify-content: center;
     width: 100%;
     margin: 20px auto;
 }
+
 .snsShareBtn button{
     width: 33px;
 	height: 32px;
@@ -41,4 +49,10 @@
 	&:hover {
 		background-color: #a99fee;
 	}
+}
+
+@media all and (max-width:767px){
+    .startPageLayout{
+        height: 100vh;    
+    }
 }

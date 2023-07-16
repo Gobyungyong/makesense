@@ -212,7 +212,7 @@ function Card(props) {
                 </button>
             </div>
                 {index !== 0 ? // 이전 답변 수정 버튼 조건부 랜더링
-                <button onClick={viewPrevQuestionHandler}>이전 답변 변경</button>
+                <button className={classes.prev_btn} onClick={viewPrevQuestionHandler}>이전 답변 변경</button>
                 :null}
         </div>
     );

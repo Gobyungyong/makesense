@@ -44,6 +44,7 @@
 }
 
 .answer_btn {
+    width: 100%;
     border: none;
     display: block;
     text-align: center;
@@ -81,6 +82,11 @@
     transform: translateX(-9%) translateY(-25%) rotate(15deg);
 }
 
+.prev_btn {
+    border: none;
+    cursor: pointer;
+}
+
 @media all and (max-width:767px){
     .testcard_container {
         height: 660px;
@@ -101,5 +107,9 @@
         height: 20px;
         width: 80%;
         margin-top: 20px;
+    }
+
+    .answer_button_container {
+        margin-top: 40px;
     }
 }
