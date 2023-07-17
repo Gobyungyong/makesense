@@ -5,7 +5,7 @@ import Button from './Button';
 function StartCard(props) {
     return (
         <div className={classes.startPageLayout}>
-            <div className={classes.test_tilte}><Link to='/monnani/dashboard/'>울룩불룩</Link></div>
+            <div className={classes.test_tilte}><Link to='/monnani/dashboard/' style={{textDecoration: "none"}}>울룩불룩</Link></div>
             <div className={classes.test_tilte1}> 울퉁불퉁</div> 
             <div className={classes.test_tilte2}>뾰쪽길쭉</div> 
             <div className={classes.test_tilte3}>야채 친구들!</div>
