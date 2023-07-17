@@ -15,7 +15,7 @@ function DashBoard(props) {
     let answer_list = [];
     
     useEffect(() => {
-        axios.get(' https://monnani.onrender.com/api/v1/share/')
+        axios.get('https://monnani.onrender.com/api/v1/share/')
         .then((res)=>{
             setTotal(res.data.total_share);
             setFacebookShared(res.data.shared_form.instagram);
