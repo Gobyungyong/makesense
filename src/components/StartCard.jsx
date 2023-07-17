@@ -2,10 +2,17 @@ import { Link } from 'react-router-dom';
 import classes from './StartCard.module.css'
 import Button from './Button';
 
+const linkStyle = {
+    textDecoration: 'none', 
+    color: '#F7A4A4',
+    cursor: 'none',
+};
+
+
 function StartCard(props) {
     return (
         <div className={classes.startPageLayout}>
-            <div className={classes.test_tilte}><Link to='/monnani/dashboard/' style={{textDecoration: "none", color: #F7A4A4, cursor: 'none'}}>울룩불룩</Link></div>
+            <div className={classes.test_tilte}><Link to='/monnani/dashboard/' style={linkStyle}>울룩불룩</Link></div>
             <div className={classes.test_tilte1}> 울퉁불퉁</div> 
             <div className={classes.test_tilte2}>뾰쪽길쭉</div> 
             <div className={classes.test_tilte3}>야채 친구들!</div>
