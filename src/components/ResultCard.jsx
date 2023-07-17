@@ -37,7 +37,7 @@ function ResultCard(props) {
         });
 
         
-        axios.post(' https://monnani.onrender.com/api/v1/result/',{
+        axios.post(' https://monnani.onrender.com/api/v1/share/',{
             form_name: 'kakaotalk', 
         });
         
@@ -225,7 +225,7 @@ function ResultCard(props) {
                 <div>높은 품질과 착한 가격을 가진 못난이 농작물을 통해</div>
                 <div>환경도 지키고 가치있는 소비를 해보세요!</div>
                 <button className={classes.uglyBtn} onClick={()=>{
-                            axios.post('https://monnani.onrender.com/api/v1/result/',{
+                            axios.post('https://monnani.onrender.com/api/v1/share/',{
                                 form_name: 'market', 
                             });
                         }}><a href="https://uglyus.co.kr/ustore"><span data-text="못난이농산물 구경가기">못난이농산물 구경가기</span></a></button>
@@ -239,20 +239,20 @@ function ResultCard(props) {
                 </div>
                 <div>
                     <FacebookShareButton onClick={()=>{
-                            axios.post('https://monnani.onrender.com/api/v1/result/',{
+                            axios.post('https://monnani.onrender.com/api/v1/share/',{
                                 form_name: 'facebook' 
                             });
                         }} className={classes.snsBtn} url={`https://monnani-front.onrender.com/${props.mbti}/`}><FacebookIcon size={32} round={true} /></FacebookShareButton> 
                 </div>
                 <div>
                     <TwitterShareButton onClick={()=>{
-                            axios.post('https://monnani.onrender.com/api/v1/result/',{
+                            axios.post('https://monnani.onrender.com/api/v1/share/',{
                                 form_name: 'twitter' 
                             });
                         }} className={classes.snsBtn} url={`https://monnani-front.onrender.com/${props.mbti}/`}><TwitterIcon size={32} round={true} /></TwitterShareButton> 
                 </div>
                 <CopyToClipboard onClick={()=>{
-                            axios.post('https://monnani.onrender.com/api/v1/result/',{
+                            axios.post('https://monnani.onrender.com/api/v1/share/',{
                                 form_name: 'copylink' 
                             });
                         }} className={classes.snsBtn} text={`https://monnani-front.onrender.com/${props.mbti}/`}>
