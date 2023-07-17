@@ -184,7 +184,7 @@ function Card(props) {
             console.log(post_result);
             
             axios.post(
-                'http://localhost:8000/api/v1/result/',
+                'https://monnani.onrender.com/api/v1/result/',
                 post_result,
                 {
                     headers: {

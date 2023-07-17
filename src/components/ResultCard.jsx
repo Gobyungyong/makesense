@@ -20,8 +20,8 @@ function ResultCard(props) {
             imageUrl:
             'https://media.discordapp.net/attachments/1114074269534670898/1130022633619062854/IMG_1698.PNG?width=506&height=675',
             link: {
-            mobileWebUrl: 'http://localhost:3001/',
-            webUrl: 'http://localhost:3001/',
+            mobileWebUrl: 'https://monnani-front.onrender.com/',
+            webUrl: 'https://monnani-front.onrender.com/',
             },
         },
     
@@ -29,15 +29,15 @@ function ResultCard(props) {
             {
             title: '야채쇼핑하러가자!',
             link: {
-                mobileWebUrl: 'http://localhost:3001/',
-                webUrl: 'http://localhost:3001/',
+                mobileWebUrl: 'https://monnani-front.onrender.com/',
+                webUrl: 'https://monnani-front.onrender.com/',
             },
             },
         ],
         });
 
         
-        axios.post('http://localhost:8000/api/v1/share/',{
+        axios.post(' https://monnani.onrender.com/api/v1/result/',{
             form_name: 'kakaotalk', 
         });
         
@@ -83,7 +83,7 @@ function ResultCard(props) {
         },
         ISTJT:{
             vegetable : '감쟈 감쟈 왕감자',
-            content: '방해받는거 싫어하며 일 중독자!! 나를 반으로 쪼개도 싹이 나는 나라구!',
+            content: '방해받는거 싫어하며 일 중독자!! 나를 반으로 쪼개도 싹이 나는 감자라구!',
             nickname: '나는야 경주마',
         },
         INFPA:{
@@ -225,7 +225,7 @@ function ResultCard(props) {
                 <div>높은 품질과 착한 가격을 가진 못난이 농작물을 통해</div>
                 <div>환경도 지키고 가치있는 소비를 해보세요!</div>
                 <button className={classes.uglyBtn} onClick={()=>{
-                            axios.post('http://localhost:8000/api/v1/share/',{
+                            axios.post('https://monnani.onrender.com/api/v1/result/',{
                                 form_name: 'market', 
                             });
                         }}><a href="https://uglyus.co.kr/ustore"><span data-text="못난이농산물 구경가기">못난이농산물 구경가기</span></a></button>
@@ -239,26 +239,26 @@ function ResultCard(props) {
                 </div>
                 <div>
                     <FacebookShareButton onClick={()=>{
-                            axios.post('http://localhost:8000/api/v1/share/',{
+                            axios.post('https://monnani.onrender.com/api/v1/result/',{
                                 form_name: 'facebook' 
                             });
-                        }} className={classes.snsBtn} url={`http://localhost:3001/result/${props.mbti}`}><FacebookIcon size={32} round={true} /></FacebookShareButton> 
+                        }} className={classes.snsBtn} url={`https://monnani-front.onrender.com/${props.mbti}/`}><FacebookIcon size={32} round={true} /></FacebookShareButton> 
                 </div>
                 <div>
                     <TwitterShareButton onClick={()=>{
-                            axios.post('http://localhost:8000/api/v1/share/',{
+                            axios.post('https://monnani.onrender.com/api/v1/result/',{
                                 form_name: 'twitter' 
                             });
-                        }} className={classes.snsBtn} url={`http://localhost:3001/result/${props.mbti}`}><TwitterIcon size={32} round={true} /></TwitterShareButton> 
+                        }} className={classes.snsBtn} url={`https://monnani-front.onrender.com/${props.mbti}/`}><TwitterIcon size={32} round={true} /></TwitterShareButton> 
                 </div>
                 <CopyToClipboard onClick={()=>{
-                            axios.post('http://localhost:8000/api/v1/share/',{
+                            axios.post('https://monnani.onrender.com/api/v1/result/',{
                                 form_name: 'copylink' 
                             });
-                        }} className={classes.snsBtn} text={`http://localhost:3001/result/${props.mbti}`}>
+                        }} className={classes.snsBtn} text={`https://monnani-front.onrender.com/${props.mbti}/`}>
                     <button onClick={()=>{
                         alert('복사완료!')
-                    }}><FontAwesomeIcon icon={ faPaperclip }   /></button>
+                    }}><FontAwesomeIcon icon={ faPaperclip }/></button>
                 </CopyToClipboard>
             </div>
             <div className='replayBtn'>

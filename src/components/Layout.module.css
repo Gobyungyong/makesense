@@ -16,12 +16,13 @@
     justify-content: center;
     align-items: center;
     height: 100vh;    
-
+    
 }
 
 @media all and (max-width:767px){
     .wrapper {
-        height: 600px;
+        transform: translateY(15%);
+        height: 900px;
         padding: 0;
         min-height: 600px;
     }

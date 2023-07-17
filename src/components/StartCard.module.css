@@ -62,7 +62,8 @@
 
 @media all and (max-width:767px){
     .startPageLayout{
-        height: 667px;
+        height: 900px;
+        padding-top: 50px;
     }
     .mainImg img{
         width: 350px;

@@ -15,7 +15,7 @@ function DashBoard(props) {
     let answer_list = [];
     
     useEffect(() => {
-        axios.get('http://localhost:8000/api/v1/share/')
+        axios.get(' https://monnani.onrender.com/api/v1/share/')
         .then((res)=>{
             setTotal(res.data.total_share);
             setFacebookShared(res.data.shared_form.instagram);
@@ -23,18 +23,18 @@ function DashBoard(props) {
             setLinkcopy(res.data.shared_form.linkCopy);
         });
         
-        axios.get('http://localhost:8000/api/v1/result/selected_answers/')
+        axios.get('https://monnani.onrender.com/api/v1/result/')
         .then((res)=>{
             setAnswers(res.data);
             console.log(answers)
         });
         
-        axios.get('http://localhost:8000/api/v1/result/totalUser/')
+        axios.get('https://monnani.onrender.com/api/v1/result/ ')
         .then((res)=>{
             setTotalUser(res.data);
         });
 
-        axios.get('http://localhost:8000/api/v1/result/top_MBTI/')
+        axios.get('https://monnani.onrender.com/api/v1/result/ ')
         .then((res) => {
             setRanking(res.data);
         });
