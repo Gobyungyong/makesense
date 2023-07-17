@@ -5,7 +5,7 @@ import Button from './Button';
 const linkStyle = {
     textDecoration: 'none', 
     color: '#F7A4A4',
-    cursor: 'none',
+    cursor: 'default',
 };
 
 
