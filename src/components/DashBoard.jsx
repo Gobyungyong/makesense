@@ -11,6 +11,7 @@ function DashBoard(props) {
     const [ranking,setRanking] = useState();
     const [answers,setAnswers] = useState();
     const [totalUser, setTotalUser] = useState();
+    const [market, setMarket] = useState();
     let ranking_list = [];
     let answer_list = [];
     
@@ -18,9 +19,9 @@ function DashBoard(props) {
         axios.get('https://monnani.onrender.com/api/v1/share/')
         .then((res)=>{
             setTotal(res.data.total_share);
-            setFacebookShared(res.data.shared_form.instagram);
+            setFacebookShared(res.data.shared_form.facebook);
             setKakaoShared(res.data.shared_form.kakaotalk);
-            setLinkcopy(res.data.shared_form.linkCopy);
+            setLinkcopy(res.data.shared_form.linkcopy);
         });
         
         axios.get('https://monnani.onrender.com/api/v1/result/selected_answers/')
@@ -38,6 +39,10 @@ function DashBoard(props) {
             setRanking(res.data);
         });
         
+        axios.get('https://monnani.onrender.com/api/v1/result/share/')
+        .then((res)=>{
+            setMarket(res.data);
+        });
     }
     ,[]);
     
@@ -65,6 +70,7 @@ function DashBoard(props) {
                         <div>Kakaotalk: {kakaoShared}</div>
                         <div>Facebook : {facebookShared}</div>
                         <div>링크 복사 : {linkcopy}</div>
+                        <div>Market Click: {market}</div>
                     </div>
                     <div className={classes.answer_count}>
                         선택 답변 수 :
