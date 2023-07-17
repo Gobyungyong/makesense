@@ -23,18 +23,17 @@ function DashBoard(props) {
             setLinkcopy(res.data.shared_form.linkCopy);
         });
         
-        axios.get('https://monnani.onrender.com/api/v1/result/')
+        axios.get('https://monnani.onrender.com/api/v1/result/selected_answers/')
         .then((res)=>{
             setAnswers(res.data);
-            console.log(answers)
         });
         
-        axios.get('https://monnani.onrender.com/api/v1/result/ ')
+        axios.get('https://monnani.onrender.com/api/v1/result/totalUser/')
         .then((res)=>{
             setTotalUser(res.data);
         });
 
-        axios.get('https://monnani.onrender.com/api/v1/result/ ')
+        axios.get('https://monnani.onrender.com/api/v1/result/top_MBTI/')
         .then((res) => {
             setRanking(res.data);
         });
